@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             lblProductTitle = new Label();
             btnAddProduct = new Button();
@@ -81,21 +82,21 @@
             dataGridViewCellStyle1.BackColor = Color.FromArgb(241, 245, 249);
             dataGridViewCellStyle1.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             dataGridViewCellStyle1.ForeColor = Color.FromArgb(51, 65, 85);
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(241, 245, 249);
+            dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(51, 65, 85);
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dgvProducts.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvProducts.ColumnHeadersHeight = 40;
             dgvProducts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dgvProducts.Columns.AddRange(new DataGridViewColumn[] { colProductCode, colProductName, colCategory, colStockQuantity, colUnitPrice });
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 10F);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dgvProducts.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Window;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 10F);
+            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            dgvProducts.DefaultCellStyle = dataGridViewCellStyle3;
             dgvProducts.EnableHeadersVisualStyles = false;
             dgvProducts.GridColor = Color.FromArgb(226, 232, 240);
             dgvProducts.Location = new Point(25, 90);
@@ -106,33 +107,42 @@
             dgvProducts.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvProducts.Size = new Size(840, 450);
             dgvProducts.TabIndex = 2;
+            dgvProducts.CellFormatting += dgvProducts_CellFormatting;
             // 
             // colProductCode
             // 
+            colProductCode.DataPropertyName = "ProductCode";
             colProductCode.HeaderText = "商品コード";
             colProductCode.Name = "colProductCode";
             colProductCode.ReadOnly = true;
             // 
             // colProductName
             // 
+            colProductName.DataPropertyName = "ProductName";
             colProductName.HeaderText = "商品名";
             colProductName.Name = "colProductName";
             colProductName.ReadOnly = true;
             // 
             // colCategory
             // 
+            colCategory.DataPropertyName = "Category";
             colCategory.HeaderText = "カテゴリ";
             colCategory.Name = "colCategory";
             colCategory.ReadOnly = true;
             // 
             // colStockQuantity
             // 
+            colStockQuantity.DataPropertyName = "StockQuantity";
             colStockQuantity.HeaderText = "在庫数";
             colStockQuantity.Name = "colStockQuantity";
             colStockQuantity.ReadOnly = true;
             // 
             // colUnitPrice
             // 
+            colUnitPrice.DataPropertyName = "UnitPrice";
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.Format = "¥#,##0";
+            colUnitPrice.DefaultCellStyle = dataGridViewCellStyle2;
             colUnitPrice.HeaderText = "単価";
             colUnitPrice.Name = "colUnitPrice";
             colUnitPrice.ReadOnly = true;
