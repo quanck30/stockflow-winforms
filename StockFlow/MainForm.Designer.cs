@@ -136,6 +136,7 @@
             btnProducts.Text = "商品管理";
             btnProducts.TextAlign = ContentAlignment.MiddleLeft;
             btnProducts.UseVisualStyleBackColor = true;
+            btnProducts.Click += btnProducts_Click;
             // 
             // btnDashboard
             // 
