@@ -67,6 +67,7 @@
             btnAddProduct.TabIndex = 1;
             btnAddProduct.Text = "＋ 商品を追加";
             btnAddProduct.UseVisualStyleBackColor = false;
+            btnAddProduct.Click += btnAddProduct_Click;
             // 
             // dgvProducts
             // 

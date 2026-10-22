@@ -1,4 +1,5 @@
 ﻿using StockFlow.Models;
+using StockFlow.Repositories;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,30 +15,7 @@ namespace StockFlow
         public ProductControl()
         {
             InitializeComponent();
-            List<Product> products = new()
-            {
-                 new Product
-                {
-                    Id = 1,
-                    ProductCode = "P001",
-                    ProductName = "ノート",
-                    Category = "文房具",
-                    StockQuantity = 120,
-                    MinimumStock = 20,
-                    UnitPrice = 250
-                },
-                new Product
-                {
-                    Id = 2,
-                    ProductCode = "P002",
-                    ProductName = "ボールペン",
-                    Category = "文房具",
-                    StockQuantity = 10,
-                    MinimumStock = 30,
-                    UnitPrice = 150
-                }
-
-            };
+            var products = ProductRepository.GetAll();
             dgvProducts.AutoGenerateColumns = false;
             dgvProducts.DataSource = products;
         }
@@ -54,11 +32,17 @@ namespace StockFlow
             {
                 return;
             }
-            if(product.StockQuantity < product.MinimumStock)
+            if (product.StockQuantity < product.MinimumStock)
             {
                 e.CellStyle.BackColor = Color.FromArgb(254, 226, 226);
                 e.CellStyle.ForeColor = Color.FromArgb(153, 27, 27);
             }
+        }
+
+        private void btnAddProduct_Click(object sender, EventArgs e)
+        {
+            using AddProductForm form = new();
+            form.ShowDialog(this.FindForm());
         }
     }
 }
